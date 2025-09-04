@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Leçon 1 : Introduction au Hacking Éthique</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #111; 
+      color: #00ff88; 
+      margin: 0; 
+      padding: 20px; 
+      line-height: 1.6;
+    }
+    h1, h2, h3 { color: #00ff88; }
+    pre { 
+      background: #222; 
+      padding: 15px; 
+      border-radius: 10px; 
+      overflow-x: auto; 
+      margin-bottom: 20px;
+    }
+    code { color: #ffcc00; }
+    a { color: #00ff88; text-decoration: none; font-weight: bold; }
+    a:hover { color: #fff; }
+    ul { margin-left: 20px; margin-bottom: 20px; }
+    p { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Leçon 1 : Introduction au Hacking Éthique</h1>
+
+  <h2>Qu’est-ce que le hacking éthique ?</h2>
+  <p>Le hacking éthique, également appelé <strong>“hacking blanc”</strong>, consiste à tester et sécuriser des systèmes informatiques de manière légale et autorisée. L’objectif principal est d’identifier les vulnérabilités avant que des hackers malveillants ne les exploitent.</p>
+  <p>Les hackers éthiques travaillent souvent pour des entreprises, des organisations gouvernementales ou en tant que consultants indépendants. Leur rôle est de protéger les données et la réputation des systèmes qu’ils testent.</p>
+
+  <h2>Différence entre hacker éthique et hacker malveillant</h2>
+  <ul>
+    <li><strong>Hacker éthique :</strong> teste des systèmes avec autorisation, informe les propriétaires des vulnérabilités et propose des solutions.</li>
+    <li><strong>Hacker malveillant :</strong> attaque sans permission, vole des informations, ou cause des dommages aux systèmes.</li>
+  </ul>
+  <p>En résumé, l’éthique et la légalité sont les principaux facteurs qui distinguent un hacker blanc d’un hacker noir.</p>
+
+  <h2>Principales pratiques de sécurité</h2>
+  <p>Pour être un hacker éthique efficace, il est important de connaître les pratiques suivantes :</p>
+  <ul>
+    <li>Utiliser des environnements de test sécurisés (laboratoires ou machines virtuelles).</li>
+    <li>Analyser et comprendre les protocoles réseau et les services exposés.</li>
+    <li>Connaître les outils de scan et d’audit de sécurité.</li>
+    <li>Documenter toutes les découvertes et fournir un rapport clair et précis.</li>
+    <li>Mettre l’accent sur la prévention plutôt que sur l’exploitation malveillante.</li>
+  </ul>
+
+  <h2>Exemple pratique : Vérification de la force d’un mot de passe</h2>
+  <p>Un des premiers tests de sécurité consiste à vérifier si les mots de passe utilisés sont suffisamment forts pour protéger les comptes utilisateurs.</p>
+
+  <pre><code>
+// Fonction JavaScript pour vérifier la force d'un mot de passe
+function isStrongPassword(pwd) {
+    // Vérifie que le mot de passe a au moins 8 caractères
+    const isLongEnough = pwd.length >= 8;
+
+    // Vérifie la présence d'au moins une lettre majuscule
+    const hasUpperCase = /[A-Z]/.test(pwd);
+
+    // Vérifie la présence d'au moins un chiffre
+    const hasNumber = /\d/.test(pwd);
+
+    // Retourne true si toutes les conditions sont remplies
+    return isLongEnough && hasUpperCase && hasNumber;
+}
+
+// Exemples d'utilisation
+console.log(isStrongPassword("Password123")); // true -> mot de passe fort
+console.log(isStrongPassword("abc123"));      // false -> mot de passe faible
+console.log(isStrongPassword("MonMotDePasse")); // false -> pas de chiffre
+  </code></pre>
+  <p><strong>Explication :</strong></p>
+  <ul>
+    <li><code>pwd.length >= 8</code> : s’assure que le mot de passe a au moins 8 caractères.</li>
+    <li><code>/[A-Z]/.test(pwd)</code> : vérifie la présence d’une majuscule.</li>
+    <li><code>/\d/.test(pwd)</code> : vérifie la présence d’un chiffre.</li>
+    <li>La fonction retourne <code>true</code> uniquement si toutes les conditions sont remplies.</li>
+  </ul>
+
+  <h2>Conseils pratiques pour débutants</h2>
+  <ul>
+    <li>Commencez par des laboratoires en ligne ou des machines virtuelles sécurisées.</li>
+    <li>Apprenez les bases des réseaux, des systèmes d’exploitation et des protocoles Internet.</li>
+    <li>Documentez toujours vos tests et vos découvertes.</li>
+    <li>Ne testez jamais un système réel sans autorisation explicite.</li>
+    <li>Pratiquez régulièrement pour renforcer vos compétences.</li>
+  </ul>
+
+  <h2>Résumé de la leçon</h2>
+  <p>Le hacking éthique est une compétence essentielle pour protéger les systèmes informatiques. Il nécessite :</p>
+  <ul>
+    <li>Connaissance des vulnérabilités et des menaces.</li>
+    <li>Respect strict de l’éthique et de la légalité.</li>
+    <li>Maîtrise des outils et techniques de sécurité.</li>
+    <li>Capacité à documenter et à proposer des solutions correctives.</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Retour à l'accueil</a></p>
+</body>
+  </html>
