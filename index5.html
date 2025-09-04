@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Leçon 5 : Test de pénétration</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #111; 
+      color: #00ff88; 
+      margin: 0; 
+      padding: 20px; 
+      line-height: 1.6;
+    }
+    h1, h2, h3 { color: #00ff88; }
+    pre { 
+      background: #222; 
+      padding: 15px; 
+      border-radius: 10px; 
+      overflow-x: auto; 
+      margin-bottom: 20px;
+    }
+    code { color: #ffcc00; }
+    a { color: #00ff88; text-decoration: none; font-weight: bold; }
+    a:hover { color: #fff; }
+    ul { margin-left: 20px; margin-bottom: 20px; }
+    p { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Leçon 5 : Test de pénétration</h1>
+
+  <h2>Introduction</h2>
+  <p>Le test de pénétration (ou pentest) consiste à simuler des attaques sur un système pour détecter ses vulnérabilités avant qu’un hacker malveillant ne les exploite. C’est une étape essentielle pour la sécurité informatique.</p>
+
+  <h2>Étapes principales d’un test de pénétration</h2>
+  <ul>
+    <li><strong>Reconnaissance :</strong> Collecter des informations sur la cible (IP, domaine, services).</li>
+    <li><strong>Scan de vulnérabilités :</strong> Identifier les ports ouverts, services actifs et vulnérabilités connues.</li>
+    <li><strong>Exploitation contrôlée :</strong> Tester les failles trouvées dans un environnement sûr.</li>
+    <li><strong>Rapport :</strong> Documenter les découvertes et proposer des solutions correctives.</li>
+  </ul>
+
+  <h2>Exemple pratique : Scanner un hôte avec Nmap</h2>
+  <pre><code>
+# Scanner les ports et services d'un hôte
+nmap -sV 192.168.1.1
+
+# Explication :
+# -sV : détecte la version des services
+# 192.168.1.1 : adresse IP de la cible
+  </code></pre>
+
+  <h2>Explications détaillées</h2>
+  <ul>
+    <li><code>nmap</code> : outil puissant pour découvrir les ports ouverts et services actifs.</li>
+    <li><code>-sV</code> : permet de détecter la version des services pour identifier les vulnérabilités potentielles.</li>
+    <li>Les scans doivent toujours être effectués avec l’autorisation explicite de la cible.</li>
+  </ul>
+
+  <h2>Conseils pour débutants</h2>
+  <ul>
+    <li>Pratiquez d’abord sur votre propre réseau ou sur des machines virtuelles.</li>
+    <li>Documentez toutes vos étapes pour créer un rapport clair.</li>
+    <li>Ne tentez jamais de scanner des systèmes sans autorisation, cela est illégal.</li>
+    <li>Combinez Nmap avec d’autres outils comme Nikto ou OpenVAS pour des tests plus complets.</li>
+  </ul>
+
+  <h2>Résumé</h2>
+  <p>Cette leçon a présenté les bases du test de pénétration et comment utiliser Nmap pour scanner des hôtes. Vous devez maintenant être capable de :</p>
+  <ul>
+    <li>Comprendre les étapes d’un pentest.</li>
+    <li>Scanner un hôte pour identifier ports et services.</li>
+    <li>Appliquer ces connaissances dans un environnement sécurisé et légal.</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Retour à l'accueil</a></p>
+</body>
+  </html>
