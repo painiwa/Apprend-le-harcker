@@ -1,0 +1,81 @@
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Leçon 9 : Sécurité des applications</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #111; 
+      color: #00ff88; 
+      margin: 0; 
+      padding: 20px; 
+      line-height: 1.6;
+    }
+    h1, h2, h3 { color: #00ff88; }
+    pre { 
+      background: #222; 
+      padding: 15px; 
+      border-radius: 10px; 
+      overflow-x: auto; 
+      margin-bottom: 20px;
+    }
+    code { color: #ffcc00; }
+    a { color: #00ff88; text-decoration: none; font-weight: bold; }
+    a:hover { color: #fff; }
+    ul { margin-left: 20px; margin-bottom: 20px; }
+    p { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Leçon 9 : Sécurité des applications</h1>
+
+  <h2>Introduction</h2>
+  <p>La sécurité des applications consiste à protéger les logiciels et sites web contre les attaques et les failles exploitées par des hackers. Cela inclut la validation des entrées, la gestion sécurisée des sessions et la vérification régulière des vulnérabilités.</p>
+
+  <h2>Principales pratiques de sécurité</h2>
+  <ul>
+    <li><strong>Validation des entrées :</strong> Toujours vérifier les données fournies par les utilisateurs pour éviter les injections SQL, XSS ou autres attaques.</li>
+    <li><strong>Gestion des sessions et cookies :</strong> Utiliser des cookies sécurisés et des sessions chiffrées pour protéger les informations de connexion.</li>
+    <li><strong>Tests réguliers :</strong> Scanner et tester régulièrement vos applications pour détecter de nouvelles vulnérabilités.</li>
+  </ul>
+
+  <h2>Exemple pratique : Valider un email en JavaScript</h2>
+  <pre><code>
+function validateEmail(email) {
+  // Expression régulière pour vérifier le format d'un email
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+// Exemple d'utilisation
+console.log(validateEmail("exemple@test.com")); // true
+console.log(validateEmail("mauvais-email")); // false
+  </code></pre>
+
+  <h2>Explications détaillées</h2>
+  <ul>
+    <li><code>/^[^\s@]+@[^\s@]+\.[^\s@]+$/</code> : expression régulière qui vérifie que l'email contient un nom, un @ et un domaine valide.</li>
+    <li><code>regex.test(email)</code> : retourne true si l'email correspond au format, sinon false.</li>
+    <li>Cette validation côté client est utile, mais il est important de valider aussi côté serveur pour plus de sécurité.</li>
+  </ul>
+
+  <h2>Conseils pour débutants</h2>
+  <ul>
+    <li>Ne jamais faire confiance aux données des utilisateurs.</li>
+    <li>Utiliser HTTPS pour protéger les échanges entre client et serveur.</li>
+    <li>Mettre en place des politiques de gestion des mots de passe sécurisés.</li>
+    <li>Effectuer des tests de vulnérabilités régulièrement avec des outils comme OWASP ZAP ou Burp Suite.</li>
+  </ul>
+
+  <h2>Résumé</h2>
+  <p>Cette leçon vous a présenté les bases de la sécurité des applications. Vous devez maintenant être capable de :</p>
+  <ul>
+    <li>Valider correctement les entrées utilisateurs.</li>
+    <li>Gérer de manière sécurisée les sessions et cookies.</li>
+    <li>Effectuer des tests réguliers pour détecter les vulnérabilités.</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Retour à l'accueil</a></p>
+</body>
+</html>
