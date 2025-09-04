@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Leçon 6 : Analyse de vulnérabilités</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #111; 
+      color: #00ff88; 
+      margin: 0; 
+      padding: 20px; 
+      line-height: 1.6;
+    }
+    h1, h2, h3 { color: #00ff88; }
+    pre { 
+      background: #222; 
+      padding: 15px; 
+      border-radius: 10px; 
+      overflow-x: auto; 
+      margin-bottom: 20px;
+    }
+    code { color: #ffcc00; }
+    a { color: #00ff88; text-decoration: none; font-weight: bold; }
+    a:hover { color: #fff; }
+    ul { margin-left: 20px; margin-bottom: 20px; }
+    p { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Leçon 6 : Analyse de vulnérabilités</h1>
+
+  <h2>Introduction</h2>
+  <p>L’analyse de vulnérabilités consiste à identifier et évaluer les failles présentes dans les systèmes informatiques. Cette étape est cruciale pour anticiper les attaques et renforcer la sécurité.</p>
+
+  <h2>Approches principales</h2>
+  <ul>
+    <li><strong>Analyse automatisée :</strong> utilisation d’outils pour scanner des systèmes ou sites web rapidement.</li>
+    <li><strong>Analyse manuelle :</strong> inspection des services, configurations et codes pour détecter des failles que les outils peuvent manquer.</li>
+  </ul>
+
+  <h2>Exemple pratique : Scanner un site avec Nikto</h2>
+  <pre><code>
+# Scanner un site web à la recherche de vulnérabilités connues
+nikto -h http://example.com
+
+# Explication :
+# -h : cible le site web
+# Nikto teste différents points comme :
+#  - failles de configuration
+#  - fichiers sensibles exposés
+#  - vulnérabilités connues
+  </code></pre>
+
+  <h2>Explications détaillées</h2>
+  <ul>
+    <li><code>Nikto</code> : outil open-source pour détecter rapidement des failles sur un site web.</li>
+    <li>L’analyse manuelle est complémentaire : elle permet de repérer des vulnérabilités spécifiques ou complexes.</li>
+    <li>Combiner outils automatisés et analyse manuelle donne une vue complète des risques.</li>
+  </ul>
+
+  <h2>Conseils pour débutants</h2>
+  <ul>
+    <li>Pratiquez d’abord sur des sites de test ou environnements locaux.</li>
+    <li>Documentez chaque vulnérabilité trouvée et proposez des solutions correctives.</li>
+    <li>Ne testez jamais un site ou un système sans autorisation explicite.</li>
+    <li>Essayez différents outils comme OpenVAS, Nessus ou Nikto pour apprendre à détecter diverses vulnérabilités.</li>
+  </ul>
+
+  <h2>Résumé</h2>
+  <p>Cette leçon vous a présenté l’analyse de vulnérabilités et les outils pour la réaliser. Vous devez maintenant être capable de :</p>
+  <ul>
+    <li>Utiliser des scanners automatisés pour détecter les failles.</li>
+    <li>Effectuer une analyse manuelle pour compléter les résultats.</li>
+    <li>Documenter et prioriser les vulnérabilités pour renforcer la sécurité.</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Retour à l'accueil</a></p>
+</body>
+</html>
