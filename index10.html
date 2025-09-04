@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Leçon 10 : Mini-lab interactif avancé</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #111; 
+      color: #00ff88; 
+      margin: 0; 
+      padding: 20px; 
+      line-height: 1.6;
+    }
+    h1, h2, h3 { color: #00ff88; }
+    pre { 
+      background: #222; 
+      padding: 15px; 
+      border-radius: 10px; 
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+    code { color: #ffcc00; }
+    a { color: #00ff88; text-decoration: none; font-weight: bold; }
+    a:hover { color: #fff; }
+    button, select { 
+      background-color: #00ff88; 
+      color: #111; 
+      border: none; 
+      padding: 10px 15px; 
+      border-radius: 5px; 
+      cursor: pointer; 
+      margin-bottom: 10px;
+    }
+    button:hover, select:hover { background-color: #00cc66; }
+    input { padding: 5px; border-radius: 5px; border: none; margin-right: 10px; width: 200px; }
+    .output, .explanation { 
+      background: #222; 
+      padding: 10px; 
+      border-radius: 8px; 
+      white-space: pre-wrap;
+      font-family: monospace;
+      margin-bottom: 20px;
+    }
+    .explanation { color: #ffcc00; }
+  </style>
+</head>
+<body>
+  <h1>Leçon 10 : Mini-lab interactif avancé</h1>
+
+  <p>Dans ce mini-lab, vous allez apprendre à simuler des tests de sécurité de manière interactive :</p>
+  <ul>
+    <li>Définir une cible (IP ou domaine)</li>
+    <li>Choisir un scan ou test d’exploitation</li>
+    <li>Visualiser les résultats simulés et analyser les vulnérabilités</li>
+  </ul>
+
+  <h2>1. Définir la cible</h2>
+  <input type="text" id="targetIP" placeholder="192.168.1.10">
+  <button onclick="setTarget()">Définir la cible</button>
+  <div id="targetOutput" class="explanation"></div>
+
+  <h2>2. Choisir un scan ou une attaque</h2>
+  <select id="scanChoice">
+    <option value="nmap">Scan Nmap</option>
+    <option value="nikto">Scan Nikto</option>
+    <option value="metasploit">Exploitation Metasploit</option>
+    <option value="all">Tout exécuter</option>
+  </select>
+  <button onclick="executeScan()">Exécuter</button>
+
+  <h2>3. Résultats</h2>
+  <div id="scanOutput" class="output"></div>
+
+  <h2>4. Rapport automatique</h2>
+  <pre id="reportOutput"></pre>
+
+  <p class="explanation">
+    Chaque scan fournit des informations différentes :<br>
+    <strong>Nmap</strong> : découverte des ports et services ouverts.<br>
+    <strong>Nikto</strong> : identification des vulnérabilités web.<br>
+    <strong>Metasploit</strong> : simulation d’exploitation éthique des failles.
+  </p>
+
+  <h2>Conseils éthiques et pédagogiques :</h2>
+  <ul class="explanation">
+    <li>Ne jamais tester un système réel sans autorisation.</li>
+    <li>Utiliser ce mini-lab pour apprendre et analyser les résultats.</li>
+    <li>Documenter vos tests pour créer un rapport clair et structuré.</li>
+    <li>Comprendre les informations de chaque scan pour identifier des failles potentielles.</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Retour à l'accueil</a></p>
+
+  <script>
+    let targetIP = "192.168.1.10";
+    let reportData = {};
+
+    function setTarget() {
+      const input = document.getElementById('targetIP').value;
+      if(input) {
+        targetIP = input;
+        document.getElementById('targetOutput').innerText = "Cible définie sur : " + targetIP;
+        clearOutputs();
+      } else {
+        document.getElementById('targetOutput').innerText = "Veuillez saisir une IP valide.";
+      }
+    }
+
+    function clearOutputs() {
+      document.getElementById('scanOutput').innerText = "";
+      document.getElementById('reportOutput').innerText = "";
+      reportData = {};
+    }
+
+    function executeScan() {
+      const choice = document.getElementById('scanChoice').value;
+      if(choice === "nmap") nmapScan();
+      else if(choice === "nikto") niktoScan();
+      else if(choice === "metasploit") metasploitTest();
+      else if(choice === "all") {
+        nmapScan();
+        niktoScan();
+        metasploitTest();
+      }
+      updateReport();
+    }
+
+    function nmapScan() {
+      const ports = [
+        "22/tcp open ssh OpenSSH 7.6p1",
+        "80/tcp open http Apache httpd 2.4.29",
+        "443/tcp open https Apache httpd 2.4.29",
+        "21/tcp open ftp vsftpd 3.0.3",
+        "3306/tcp open mysql MySQL 5.7"
+      ];
+      const output = `
+Starting Nmap 7.91
+Nmap scan report for ${targetIP}
+Host is up (0.003s latency)
+PORT     STATE SERVICE VERSION
+${ports.join('\n')}
+      `;
+      appendOutput("Nmap", output);
+      reportData["Nmap"] = ports;
+    }
+
+    function niktoScan() {
+      const vulnerabilities = [
+        "+ The X-XSS-Protection header is not defined.",
+        "+ The X-Content-Type-Options header is not set.",
+        "+ Allowed HTTP Methods: GET, POST, OPTIONS",
+        "+ Cookie PHPSESSID created without HttpOnly flag",
+        "+ Outdated server software detected"
+      ];
+      const output = `
+- Nikto v2.1.6
+- Target IP: ${targetIP}
++ Server: Apache/2.4.29
+${vulnerabilities.join('\n')}
+      `;
+      appendOutput("Nikto", output);
+      reportData["Nikto"] = vulnerabilities;
+    }
+
+    function metasploitTest() {
+      const exploits = [
+        "[*] Using exploit/windows/smb/ms17_010_eternalblue",
+        "[*] Setting RHOSTS = " + targetIP,
+        "[*] Running exploit...",
+        "[+] Exploit completed successfully (simulated)",
+        "[*] Shell opened on " + targetIP,
+        "[!] Simulation uniquement! Ne pas attaquer de systèmes réels."
+      ];
+      const output = exploits.join("\n");
+      appendOutput("Metasploit", output);
+      reportData["Metasploit"] = ["Simulation d'exploit réussi"];
+    }
+
+    function appendOutput(tool, text) {
+      const div = document.getElementById("scanOutput");
+      div.innerText += `== ${tool} ==\n${text}\n\n`;
+    }
+
+    function updateReport() {
+      let reportText = `Rapport pour la cible : ${targetIP}\n\n`;
+      for(let key in reportData) {
+        reportText += `== ${key} ==\n`;
+        reportText += reportData[key].join("\n") + "\n\n";
+      }
+      document.getElementById("reportOutput").innerText = reportText;
+    }
+  </script>
+</body>
+</html>
