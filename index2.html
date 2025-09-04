@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Leçon 2 : Commandes Linux de base</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #111; 
+      color: #00ff88; 
+      margin: 0; 
+      padding: 20px; 
+      line-height: 1.6;
+    }
+    h1, h2, h3 { color: #00ff88; }
+    pre { 
+      background: #222; 
+      padding: 15px; 
+      border-radius: 10px; 
+      overflow-x: auto; 
+      margin-bottom: 20px;
+    }
+    code { color: #ffcc00; }
+    a { color: #00ff88; text-decoration: none; font-weight: bold; }
+    a:hover { color: #fff; }
+    ul { margin-left: 20px; margin-bottom: 20px; }
+    p { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Leçon 2 : Commandes Linux de base</h1>
+
+  <h2>Introduction</h2>
+  <p>Linux est le système d’exploitation le plus utilisé par les hackers éthiques, car il offre un contrôle complet du système et de nombreux outils de sécurité. Maîtriser les commandes de base est essentiel pour naviguer dans le système et exécuter des scripts ou tests de sécurité.</p>
+
+  <h2>Commandes essentielles</h2>
+  <ul>
+    <li><code>ls</code> : lister les fichiers et dossiers dans le répertoire courant.</li>
+    <li><code>cd</code> : changer de répertoire pour naviguer dans l’arborescence.</li>
+    <li><code>pwd</code> : afficher le chemin complet du répertoire courant.</li>
+    <li><code>mkdir</code> : créer un nouveau dossier.</li>
+    <li><code>rm</code> : supprimer des fichiers ou dossiers.</li>
+    <li><code>touch</code> : créer un fichier vide.</li>
+  </ul>
+
+  <h2>Exemples pratiques</h2>
+  <pre><code>
+# Lister tous les fichiers, y compris cachés, avec détails
+ls -la
+
+# Changer de répertoire pour aller dans Documents
+cd Documents
+
+# Afficher le chemin complet du répertoire courant
+pwd
+
+# Créer un nouveau dossier appelé "Tests"
+mkdir Tests
+
+# Créer un fichier vide "exemple.txt"
+touch exemple.txt
+
+# Supprimer un fichier
+rm exemple.txt
+
+# Supprimer un dossier vide
+rmdir Tests
+  </code></pre>
+
+  <h2>Explications ligne par ligne</h2>
+  <ul>
+    <li><code>ls -la</code> : <strong>-l</strong> affiche les détails (permissions, propriétaire, taille), <strong>-a</strong> montre tous les fichiers y compris cachés.</li>
+    <li><code>cd Documents</code> : change le répertoire vers "Documents". Vous pouvez utiliser <code>cd ..</code> pour revenir en arrière.</li>
+    <li><code>pwd</code> : affiche le chemin complet, utile pour savoir où vous êtes dans l’arborescence.</li>
+    <li><code>mkdir Tests</code> : crée un dossier appelé "Tests".</li>
+    <li><code>touch exemple.txt</code> : crée un fichier vide pour tester des scripts ou commandes.</li>
+    <li><code>rm exemple.txt</code> : supprime le fichier. Attention : cette action est définitive.</li>
+  </ul>
+
+  <h2>Conseils pour débutants</h2>
+  <ul>
+    <li>Apprenez d’abord à naviguer dans l’arborescence avec <code>cd</code>, <code>pwd</code> et <code>ls</code>.</li>
+    <li>Faites des tests sur un dossier ou fichier factice avant d’utiliser <code>rm</code> sur vos fichiers importants.</li>
+    <li>Combinez les commandes avec des options pour mieux explorer le système.</li>
+    <li>Entraînez-vous régulièrement dans un terminal Linux ou via une machine virtuelle.</li>
+  </ul>
+
+  <h2>Résumé</h2>
+  <p>Cette leçon vous a présenté les commandes Linux de base essentielles pour un hacker éthique. Ces commandes permettent de :</p>
+  <ul>
+    <li>Naviguer efficacement dans le système.</li>
+    <li>Créer et gérer des fichiers et dossiers.</li>
+    <li>Préparer des tests de sécurité dans un environnement contrôlé.</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Retour à l'accueil</a></p>
+</body>
+  </html>
