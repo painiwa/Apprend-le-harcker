@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Leçon 3 : Réseaux et Protocoles</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #111; 
+      color: #00ff88; 
+      margin: 0; 
+      padding: 20px; 
+      line-height: 1.6;
+    }
+    h1, h2, h3 { color: #00ff88; }
+    pre { 
+      background: #222; 
+      padding: 15px; 
+      border-radius: 10px; 
+      overflow-x: auto; 
+      margin-bottom: 20px;
+    }
+    code { color: #ffcc00; }
+    a { color: #00ff88; text-decoration: none; font-weight: bold; }
+    a:hover { color: #fff; }
+    ul { margin-left: 20px; margin-bottom: 20px; }
+    p { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Leçon 3 : Réseaux et Protocoles</h1>
+
+  <h2>Introduction</h2>
+  <p>Comprendre les réseaux et les protocoles est crucial pour tout hacker éthique. Cela permet de savoir comment les données circulent entre les appareils et comment détecter ou prévenir des vulnérabilités.</p>
+
+  <h2>Concepts essentiels</h2>
+  <ul>
+    <li><strong>IP :</strong> Chaque appareil sur un réseau a une adresse IP unique pour s’identifier et communiquer.</li>
+    <li><strong>TCP (Transmission Control Protocol) :</strong> Assure la transmission fiable des données entre deux machines.</li>
+    <li><strong>UDP (User Datagram Protocol) :</strong> Transmission rapide des données sans vérification d’erreur, utile pour le streaming ou les jeux.</li>
+    <li><strong>Ports :</strong> Points de communication sur un appareil. Chaque service (HTTP, FTP, SSH) utilise un port spécifique.</li>
+  </ul>
+
+  <h2>Commandes de base sous Linux</h2>
+  <pre><code>
+# Vérifier la configuration réseau
+ifconfig
+
+# Afficher l'adresse IP actuelle et le masque de sous-réseau
+ip addr show
+
+# Tester la connexion à un serveur (ping)
+ping google.com
+
+# Vérifier les ports ouverts sur l'ordinateur local (netstat)
+netstat -tuln
+  </code></pre>
+
+  <h2>Explications pratiques</h2>
+  <ul>
+    <li><code>ifconfig</code> : affiche les interfaces réseau et leurs paramètres (IP, masque, état).</li>
+    <li><code>ip addr show</code> : alternative moderne à <code>ifconfig</code> pour voir les adresses IP.</li>
+    <li><code>ping google.com</code> : teste la connectivité entre votre machine et un serveur distant.</li>
+    <li><code>netstat -tuln</code> : liste les ports TCP/UDP ouverts et les services qui les utilisent.</li>
+  </ul>
+
+  <h2>Conseils pour débutants</h2>
+  <ul>
+    <li>Pratiquez ces commandes dans un terminal Linux ou une machine virtuelle.</li>
+    <li>Notez les adresses IP et les ports pour comprendre la structure du réseau.</li>
+    <li>Combinez <code>ping</code> et <code>netstat</code> pour identifier rapidement les problèmes ou services actifs.</li>
+    <li>Utilisez ces connaissances pour mieux comprendre les scans et tests de sécurité futurs.</li>
+  </ul>
+
+  <h2>Résumé</h2>
+  <p>Cette leçon a présenté les bases des réseaux et des protocoles essentiels pour la sécurité. Vous devez maintenant être capable de :</p>
+  <ul>
+    <li>Identifier l’adresse IP d’une machine.</li>
+    <li>Comprendre la différence entre TCP et UDP.</li>
+    <li>Vérifier la connectivité et les ports ouverts sur un système.</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Retour à l'accueil</a></p>
+</body>
+</html>
