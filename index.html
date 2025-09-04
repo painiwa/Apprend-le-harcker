@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacking Éthique</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: #eee;
+      margin: 0; padding: 0;
+    }
+    header { background: #111; padding: 20px; text-align: center; }
+    header h1 { margin: 0; color: #00ff88; }
+
+    nav { background: #222; display: flex; justify-content: center; gap: 20px; padding: 10px; }
+    nav a { color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s; }
+    nav a:hover { color: #00ff88; }
+
+    .container { max-width: 900px; margin: auto; padding: 20px; text-align: center; }
+
+    /* Formulaire */
+    #auth-container { max-width: 400px; margin: 50px auto; background: rgba(0,0,0,0.6); padding: 20px; border-radius: 15px; }
+    #auth-container input { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
+    #auth-container input[type="file"] { padding: 5px; }
+    #auth-container button { background: #00ff88; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.3s; }
+    #auth-container button:hover { background: #00cc6a; }
+    #message { margin-top: 10px; color: #00ff88; font-weight: bold; }
+
+    /* Bouton Déconnexion */
+    #logout-btn { background: #ff4d4d; border: none; color: #fff; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-bottom: 20px; transition: 0.3s; }
+    #logout-btn:hover { background: #cc0000; }
+
+    /* Affichage utilisateur */
+    #user-info { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px; }
+    #user-info img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid #00ff88; }
+    #user-info span { font-weight: bold; color: #00ff88; }
+
+    /* Message de bienvenue */
+    #welcome-msg { margin-bottom: 20px; font-size: 1.2em; color: #00ff88; font-weight: bold; opacity: 0; transform: translateY(-20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    #welcome-msg.show { opacity: 1; transform: translateY(0); }
+
+    /* Grille des leçons */
+    #lessons { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:20px; margin-top:20px; }
+    .lesson-card {
+      background: rgba(0,255,136,0.1);
+      border: 2px solid #00ff88;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .lesson-card:hover {
+      background: #00ff88;
+      color: #111;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💻 Hacking Éthique</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Accueil</a>
+  </nav>
+
+  <div class="container">
+    <!-- Formulaire inscription / connexion -->
+    <div id="auth-container">
+      <h2 id="auth-title">Inscription</h2>
+      <form id="authForm" method="post" action="#">
+        <input type="text" id="fullname" placeholder="Nom complet" required>
+        <input type="text" id="poste" placeholder="Poste" required>
+        <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+        <input type="password" id="password" placeholder="Mot de passe (6+ caractères)" required>
+        <input type="file" id="photo" accept="image/*" required>
+        <button type="submit" id="auth-button">S'inscrire</button>
+      </form>
+      <p id="switch-text" style="cursor:pointer; color:#00ff88; margin-top:10px;">Déjà inscrit ? Connectez-vous ici</p>
+      <div id="message"></div>
+    </div>
+
+    <!-- Liste des leçons -->
+    <div id="lessons-container" style="display:none;">
+      <button id="logout-btn">Déconnexion</button>
+      <div id="user-info"></div>
+      <div id="welcome-msg"></div>
+      <h2>Choisis une leçon :</h2>
+      <div id="lessons"></div>
+    </div>
+  </div>
+
+  <script>
+    const authContainer = document.getElementById("auth-container");
+    const lessonsContainer = document.getElementById("lessons-container");
+    const authForm = document.getElementById("authForm");
+    const messageDiv = document.getElementById("message");
+    const logoutBtn = document.getElementById("logout-btn");
+    const userInfoDiv = document.getElementById("user-info");
+    const welcomeMsgDiv = document.getElementById("welcome-msg");
+    const switchText = document.getElementById("switch-text");
+    const authTitle = document.getElementById("auth-title");
+    const authButton = document.getElementById("auth-button");
+
+    const lessons = [
+      { file: "index1.html", title: "Leçon 1 : Introduction au Hacking Éthique" },
+      { file: "index2.html", title: "Leçon 2 : Commandes Linux de base" },
+      { file: "index3.html", title: "Leçon 3 : Réseaux et Protocoles" },
+      { file: "index4.html", title: "Leçon 4 : Sécurité Web" },
+      { file: "index5.html", title: "Leçon 5 : Test de pénétration" },
+      { file: "index6.html", title: "Leçon 6 : Analyse de vulnérabilités" },
+      { file: "index7.html", title: "Leçon 7 : Exploitation des failles" },
+      { file: "index8.html", title: "Leçon 8 : Cryptographie et Hashing" },
+      { file: "index9.html", title: "Leçon 9 : Sécurité des applications" },
+      { file: "index10.html", title: "Leçon 10 : Projet pratique final" }
+    ];
+
+    let isLoginMode = false;
+
+    async function hashPassword(password) {
+      const msgUint8 = new TextEncoder().encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      displayUser(JSON.parse(storedUser));
+      authContainer.style.display = "none";
+      lessonsContainer.style.display = "block";
+      displayLessons();
+    }
+
+    switchText.addEventListener("click", () => {
+      isLoginMode = !isLoginMode;
+      if (isLoginMode) {
+        authTitle.textContent = "Connexion";
+        authButton.textContent = "Se connecter";
+        switchText.textContent = "Pas encore inscrit ? Créez un compte ici";
+        document.getElementById("fullname").style.display = "none";
+        document.getElementById("poste").style.display = "none";
+        document.getElementById("photo").style.display = "none";
+      } else {
+        authTitle.textContent = "Inscription";
+        authButton.textContent = "S'inscrire";
+        switchText.textContent = "Déjà inscrit ? Connectez-vous ici";
+        document.getElementById("fullname").style.display = "block";
+        document.getElementById("poste").style.display = "block";
+        document.getElementById("photo").style.display = "block";
+      }
+      messageDiv.textContent = "";
+      authForm.reset();
+    });
+
+    authForm.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+
+      if (isLoginMode) {
+        if (!storedUser) {
+          messageDiv.textContent = "Aucun utilisateur trouvé. Inscrivez-vous d'abord.";
+          return;
+        }
+        const hashedInput = await hashPassword(password);
+        if (username === storedUser.username && hashedInput === storedUser.password) {
+          messageDiv.textContent = "Connexion réussie !";
+          setTimeout(() => {
+            authContainer.style.display = "none";
+            lessonsContainer.style.display = "block";
+            displayUser(storedUser);
+            displayLessons();
+          }, 1000);
+        } else {
+          messageDiv.textContent = "Nom d'utilisateur ou mot de passe incorrect.";
+        }
+      } else {
+        const fullname = document.getElementById("fullname").value.trim();
+        const poste = document.getElementById("poste").value.trim();
+        const photoFile = document.getElementById("photo").files[0];
+
+        if (!fullname || !poste || !username || !password || !photoFile) {
+          messageDiv.textContent = "Veuillez remplir tous les champs.";
+          return;
+        }
+        if (password.length < 6) {
+          messageDiv.textContent = "Le mot de passe doit contenir au moins 6 caractères.";
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = async function() {
+          const photoData = reader.result;
+          const hashedPassword = await hashPassword(password);
+          const user = { fullname, poste, username, photo: photoData, password: hashedPassword };
+          localStorage.setItem("user", JSON.stringify(user));
+          messageDiv.textContent = "Inscription réussie !";
+          setTimeout(() => {
+            authContainer.style.display = "none";
+            lessonsContainer.style.display = "block";
+            displayUser(user);
+            displayLessons();
+          }, 1000);
+        };
+        reader.readAsDataURL(photoFile);
+      }
+    });
+
+    logoutBtn.addEventListener("click", function() {
+      localStorage.removeItem("user");
+      lessonsContainer.style.display = "none";
+      authContainer.style.display = "block";
+      authForm.reset();
+      messageDiv.textContent = "";
+      userInfoDiv.innerHTML = "";
+      welcomeMsgDiv.textContent = "";
+      welcomeMsgDiv.classList.remove("show");
+      isLoginMode = false;
+      switchText.textContent = "Déjà inscrit ? Connectez-vous ici";
+      authTitle.textContent = "Inscription";
+      authButton.textContent = "S'inscrire";
+      document.getElementById("fullname").style.display = "block";
+      document.getElementById("poste").style.display = "block";
+      document.getElementById("photo").style.display = "block";
+    });
+
+    function displayUser(user) {
+      userInfoDiv.innerHTML = `<img src="${user.photo}" alt="Photo de ${user.fullname}"><span>${user.fullname} (${user.poste})</span>`;
+      const prenom = user.fullname.split(" ")[0];
+      welcomeMsgDiv.textContent = `Bienvenue, ${prenom} ! Prêt à apprendre le Hacking Éthique ?`;
+      setTimeout(() => welcomeMsgDiv.classList.add("show"), 100);
+    }
+
+    function displayLessons() {
+      const container = document.getElementById("lessons");
+      container.innerHTML = "";
+      lessons.forEach(lesson => {
+        const card = document.createElement("div");
+        card.className = "lesson-card";
+        card.textContent = lesson.title;
+        card.addEventListener("click", () => window.location.href = lesson.file);
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+  </html>
